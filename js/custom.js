@@ -51,6 +51,12 @@ document.addEventListener("DOMContentLoaded", function () {
       start: "top bottom",
       scrub: 1.8,
     },
+
+    benefits: {
+      trigger: ".benefits_lists",
+      start: "top bottom",
+      scrub: 1.8,
+    },
   };
 
   // square rotate animation
@@ -136,7 +142,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     benefits_nums.forEach((num) => {
       const data_speed = num.getAttribute("data-speed");
-      console.log(data_speed);
+      // console.log(1 - perseFloat(data_speed)); 소수점 삭제
+
+      tl.from(num, {
+        scrollTrigger: commonScrollTrigger.benefits,
+        x: -data_speed,
+      });
     });
   }
 
@@ -144,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const wWidth = window.outerWidth;
 
-  if (wWidth > 1300) {
+  if (wWidth < 1300) {
     headerAnimation(-70);
   } else {
     headerAnimation(0);
